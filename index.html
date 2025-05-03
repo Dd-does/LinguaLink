@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>LinguaLink</title>
+</head>
+<body>
+    
+    <header>
+        <h1>LinguaLink</h1>
+        <p>Your personal language learning goal tracker</p>
+    </header>
+    
+    <main>
+        <!-- Goal Input Section -->
+        <section id="goal-input">
+            <h2>Add a new goal</h2>
+            <form id="goalForm">
+                <input 
+                  type="text" 
+                  id="goalText" 
+                  placeholder="e.g., Practice Kanji for 10 minutes" 
+                  required 
+                />
+                <button type="submit">Add Goal</button>
+            </form>
+        </section>
+    
+        <!-- Goal List Section -->
+        <section id="goal-list">
+          <h2>Today's Goals</h2>
+          <ul id="goals">
+            <!-- Goals will show up here dynamically -->
+          </ul>
+        </section>
+    
+        <!-- Progress Tracker -->
+        <section id="progress">
+          <p>Progress: <span id="progressCount">0</span> goals completed</p>
+        </section>
+
+        <div class="container">
+          <h1>LinguaLink</h1>
+          <form> ... </form>
+          <ul id="goal-list"></ul>
+        </div>
+          
+      </main>
+      
+    <script src="script.js"></script>
+</body>
+</html>

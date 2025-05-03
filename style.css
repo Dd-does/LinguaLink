@@ -1,0 +1,123 @@
+/* Reset default browser styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Body styles */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f8fb;
+    color: #333;
+    padding: 2rem;
+    line-height: 1.6;
+  }
+  
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  h1 {
+    color: #2d7dd2;
+    font-size: 2.5rem;
+  }
+  
+  p {
+    color: #555;
+  }
+  
+  /* Sections */
+  section {
+    max-width: 600px;
+    margin: 1.5rem auto;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  /* Form */
+  form {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    background-color: #2d7dd2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1b5fa0;
+  }
+  
+  /* Goals List */
+  #goals {
+    list-style: none;
+    margin-top: 1rem;
+  }
+  
+  #goals li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* Base container styles */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Responsive form layout */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+}
+
+/* Responsive tweaks for small screens */
+@media (max-width: 600px) {
+  form {
+    flex-direction: column;
+  }
+
+  input[type="text"], button {
+    width: 100%;
+  }
+
+  li {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+  
