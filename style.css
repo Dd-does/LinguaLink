@@ -71,11 +71,100 @@
     list-style: none;
     margin-top: 1rem;
   }
-  
-  #goals li {
-    padding: 0.5rem;
-    border-bottom: 1px solid #eee;
+
+  .goal-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem; /* matches your original */
+    border-bottom: 1px solid #ccc;
+    font-size: 1rem;
   }
+  
+  
+  .complete-btn {
+    margin-left: 10px;
+    padding: 4px 8px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .complete-btn:hover {
+    background-color: #4CAF50;
+  }
+  
+  .complete-btn:disabled {
+    background-color: #aaa;
+    cursor: default;
+  }
+  
+  .completed {
+    text-decoration: line-through;
+    color: #888;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+  }
+  
+  .delete-btn {
+    margin-left: 10px;
+    padding: 4px 8px;
+    border: none;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #cc0000;
+  }
+    
+
+  /* Dark Mode Styles */
+  body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5; /* Softer white for readability */
+  }
+  
+  .dark-mode section {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+  }
+  
+  .dark-mode input,
+  .dark-mode button {
+    background-color: #333;
+    color: #f5f5f5;
+    border: 1px solid #555;
+  }
+  
+  .dark-mode #goals li {
+    background-color: #222;
+    border-bottom: 1px solid #444;
+  }
+  
+
+/* Toggle Button Style */
+#darkModeToggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background-color: #626161;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.dark-mode #darkModeToggle {
+  background-color: #333;
+  color: #fff;
+}
+
 
   /* Base container styles */
 .container {
