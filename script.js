@@ -1,4 +1,4 @@
-// Grab elements from the page
+// Get page elements
 const form = document.getElementById("goalForm");
 const goalInput = document.getElementById("goalText");
 const goalsList = document.getElementById("goals");
@@ -6,52 +6,78 @@ const progressCount = document.getElementById("progressCount");
 
 let completedGoals = 0;
 
-// When the form is submitted
+// Handle form submission
 form.addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent page reload
+  e.preventDefault(); // stop the page from refreshing
 
   const goalText = goalInput.value.trim();
-
   if (goalText === "") return;
 
-// Create the <li> element
-const li = document.createElement("li");
-li.textContent = goalText;
-
-// Add click-to-complete functionality
-li.addEventListener("click", function () {
-  li.style.textDecoration = "line-through";
-  li.style.color = "gray";
-  li.style.cursor = "default";
-  li.removeEventListener("click", arguments.callee);
-  completedGoals++;
-  progressCount.textContent = completedGoals;
+  addGoal(goalText); // call your function
+  goalInput.value = ""; // clear the input
 });
 
-// Create the delete button
-const deleteBtn = document.createElement("button");
-deleteBtn.textContent = "Delete";
-deleteBtn.style.marginLeft = "10px";
-deleteBtn.style.padding = "2px 6px";
-deleteBtn.style.border = "none";
-deleteBtn.style.backgroundColor = "#ff4d4d";
-deleteBtn.style.color = "white";
-deleteBtn.style.borderRadius = "4px";
-deleteBtn.style.cursor = "pointer";
+// This function creates the goal <li> and button
+function addGoal(goalText) {
+    const li = document.createElement("li");
+    li.classList.add("goal-item");
+  
+    const span = document.createElement("span");
+    span.textContent = goalText;
+  
+    // Complete/Undo Button
+    const completeBtn = document.createElement("button");
+    completeBtn.textContent = "Complete";
+    completeBtn.classList.add("complete-btn");
+  
+    completeBtn.addEventListener("click", () => {
+      span.classList.toggle("completed");
+  
+      const isNowCompleted = span.classList.contains("completed");
+  
+      completeBtn.textContent = isNowCompleted ? "Undo" : "Complete";
+  
+      // Update progress count
+      completedGoals += isNowCompleted ? 1 : -1;
+      progressCount.textContent = completedGoals;
+    });
+  
+    // Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-btn");
+  
+    deleteBtn.addEventListener("click", () => {
+      // If the goal was completed, subtract from progress count
+      if (span.classList.contains("completed")) {
+        completedGoals--;
+        progressCount.textContent = completedGoals;
+      }
+  
+      li.remove(); // Remove the list item
+    });
+  
+    // Add elements to the list item
+    li.appendChild(span);
+    li.appendChild(completeBtn);
+    li.appendChild(deleteBtn);
+    goalsList.appendChild(li);
+  }
+  
 
-// Prevent goal completion if delete is clicked
-deleteBtn.addEventListener("click", function (e) {
-  e.stopPropagation(); // stops the "complete" click from firing
-  li.remove();
+// Dark mode toggle
+
+const toggleButton = document.getElementById("darkModeToggle");
+
+toggleButton.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  const isDark = document.body.classList.contains("dark-mode");
+  localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
 });
 
-// Add the button to the <li>
-li.appendChild(deleteBtn);
-
-// Add the <li> to the goals list
-goalsList.appendChild(li);
-
-// Clear the input for next goal
-goalInput.value = "";
+window.addEventListener("DOMContentLoaded", () => {
+  const savedMode = localStorage.getItem("darkMode");
+  if (savedMode === "enabled") {
+    document.body.classList.add("dark-mode");
+  }
 });
-
